@@ -1,3 +1,5 @@
+
+
 function getCurrentTabUrl(callback) {
   var queryInfo = {
     active: true,
@@ -70,4 +72,21 @@ document.addEventListener('DOMContentLoaded', function() {
   getCurrentTabUrl(function(url) {
     getCurrentTabUrlCallBack(url);
   });
+
+  s1 = [322];
+
+    plot3 = $.jqplot('chart3',[s1],{
+        seriesDefaults: {
+            renderer: $.jqplot.MeterGaugeRenderer,
+            rendererOptions: {
+                min: 100,
+                max: 500,
+                intervals:[200, 300, 400, 500],
+                intervalColors:['#66cc66', '#93b75f', '#E7E658', '#cc6666']
+            }
+        }
+    });
+
+
+
 });
