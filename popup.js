@@ -52,11 +52,9 @@ function renderPolarity(statusText){
   document.getElementById('polarity').textContent = statusText;
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  // this code is executed when the user opens the extension
-  getCurrentTabUrl(function(url) {
+function getCurrentTabUrlCallBack(url)
+{
     renderStatus('Analyzing data for: ' + url);
-
     evaluateWebsiteText(url, function(text,subjuctivity,polarity) {
       renderStatus2('test ' + text );
       renderSubjuctivity("subjuctivity: "+subjuctivity);
@@ -64,6 +62,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }, function(errorMessage) {
       renderStatus2('error noooo ' + errorMessage);
     });
+}
 
+
+document.addEventListener('DOMContentLoaded', function() {
+  // this code is executed when the user opens the extension
+  getCurrentTabUrl(function(url) {
+    getCurrentTabUrlCallBack(url);
   });
 });
