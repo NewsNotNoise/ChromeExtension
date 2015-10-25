@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
       renderSubjuctivity("subjuctivity: "+subjuctivity);
       renderPolarity("polarity: "+polarity);
     }, function(errorMessage) {
-      renderStatus2('error nooo ' + errorMessage);
+      renderStatus2('error noooo ' + errorMessage);
     });
 
   });
