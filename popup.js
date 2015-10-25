@@ -12,7 +12,11 @@ function getCurrentTabUrl(callback) {
   });
 }
 
-function getDataTest2(searchUrl, callback, errorCallback) {
+function evaluateWebsiteText(searchUrl, callback, errorCallback) {
+  // okay this function deserves some comments
+  // searchUrl is the url of the website we want to evaluate. This is gonna be passed to our python server
+  // callBack is the function to be called after this code is done running, aka once the python server returns data
+  // errorCallback is the function to be called if the python server errors out (ie can't be reached)
   var searchUrl =   "https://nnn15.pythonanywhere.com/analyzeText?urlToAnalyze="+encodeURIComponent(searchUrl);
 
   var x = new XMLHttpRequest();
@@ -31,7 +35,7 @@ function getDataTest2(searchUrl, callback, errorCallback) {
   x.send();
 }
 
-
+// these render functions are used to display the data on the front end
 function renderStatus(statusText) {
   document.getElementById('status').textContent = statusText;
 }
@@ -49,10 +53,11 @@ function renderPolarity(statusText){
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+  // this code is executed when the user opens the extension
   getCurrentTabUrl(function(url) {
     renderStatus('Analyzing data for: ' + url);
 
-    getDataTest2(url, function(text,subjuctivity,polarity) {
+    evaluateWebsiteText(url, function(text,subjuctivity,polarity) {
       renderStatus2('test ' + text );
       renderSubjuctivity("subjuctivity: "+subjuctivity);
       renderPolarity("polarity: "+polarity);
