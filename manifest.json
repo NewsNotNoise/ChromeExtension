@@ -1,18 +1,25 @@
 {
   "manifest_version": 2,
 
-  "name": "Getting started example",
+  "name": "News Not Noise - Subjectivity Analyzer",
   "description": "This extension shows a Google Image search result for the current page",
-  "version": "1.0",
+  "version": "1.1",
 
   "browser_action": {
     "default_icon": "icon.png",
     "default_popup": "popup.html"
   },
+  "icons": { "16": "icon.png",
+           "48": "icon1.png",
+          "128": "icon2.png" },
+  "background":{
+    "scripts":["jqueryMin.js",
+      "jqueryUiMin.js"],
+    "pages":["popup.html"]
+  },
   "permissions": [
     "activeTab",
     "https://ajax.googleapis.com/",
     "https://nnn15.pythonanywhere.com/analyzeText"
-
   ]
 }

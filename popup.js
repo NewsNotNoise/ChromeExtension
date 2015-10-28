@@ -50,9 +50,9 @@ function renderSubjuctivity(statusText){
   document.getElementById('subjuctivity').textContent = statusText;
 }
 
-function renderPolarity(statusText){
-  document.getElementById('polarity').textContent = statusText;
-}
+// function renderPolarity(statusText){
+//   document.getElementById('polarity').textContent = statusText;
+// }
 
 function getCurrentTabUrlCallBack(url)
 {
@@ -60,7 +60,7 @@ function getCurrentTabUrlCallBack(url)
     evaluateWebsiteText(url, function(text,subjuctivity,polarity) {
       renderStatus2('test ' + text );
       renderSubjuctivity("subjuctivity: "+subjuctivity);
-      renderPolarity("polarity: "+polarity);
+      //renderPolarity("polarity: "+polarity);
     }, function(errorMessage) {
       renderStatus2('error noooo ' + errorMessage);
     });
@@ -72,21 +72,5 @@ document.addEventListener('DOMContentLoaded', function() {
   getCurrentTabUrl(function(url) {
     getCurrentTabUrlCallBack(url);
   });
-
-  s1 = [322];
-
-    plot3 = $.jqplot('chart3',[s1],{
-        seriesDefaults: {
-            renderer: $.jqplot.MeterGaugeRenderer,
-            rendererOptions: {
-                min: 100,
-                max: 500,
-                intervals:[200, 300, 400, 500],
-                intervalColors:['#66cc66', '#93b75f', '#E7E658', '#cc6666']
-            }
-        }
-    });
-
-
 
 });
