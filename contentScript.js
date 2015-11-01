@@ -1,11 +1,14 @@
 
 var contentTextToAnalyze = document.getElementsByTagName("p")
+var contentTextToAnalyzeParsed = [""];
 if(contentTextToAnalyze)
 {
-  contentTextToAnalyze = contentTextToAnalyze[0].innerHTML
+  for (i = 0; i < contentTextToAnalyze.length; i++) {
+    contentTextToAnalyzeParsed[i] = contentTextToAnalyze[i].innerHTML;
+  }
 }
 else {
-  contentTextToAnalyze = "Warning, no first paragraph found"
+  contentTextToAnalyzeParsed[0] = "Warning, no first paragraph found"
 }
 
 chrome.runtime.onMessage.addListener(
@@ -14,7 +17,7 @@ chrome.runtime.onMessage.addListener(
                 "from a content script:" + sender.tab.url :
                 "from the extension");
     if (request.greeting == "hello")
-      sendResponse({farewell: contentTextToAnalyze});
+      sendResponse({farewell: contentTextToAnalyzeParsed});
   });
 
 console.log("content script has been loaded");
